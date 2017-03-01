@@ -8,7 +8,8 @@ library(GGally)
 library(corrplot)
 library(ggcorrplot)
 library(reshape2)
----#visualizaciones----
+
+----#visualizaciones----
 
 
 cor_values <- cor(starcraft_scouting[,4:9],use="pairwise.complete.obs")
@@ -35,9 +36,9 @@ df.m <- melt(starcraft_scouting[,c(3:8)],id.vars = "unit")
 
 ggplot(data = df.m, aes(x = variable, y = value)) + geom_boxplot(aes(fill=unit))
 
-ggplot(data = df.m, aes(x = variable, y = value))+facet_wrap(~unit) + geom_boxplot()
+ggplot(data = df.m, aes(x = variable, y = value))+facet_wrap(~unit) + geom_boxplot(aes(fill=unit))
 
 
 ggplot(data = df.m, aes(x = variable, y = value,fill=unit)) + geom_density(alpha=0.25)
 
-
+ggplot(data = starcraft_scouting[starcraft_scouting$unit=='Protoss Arbiter',], aes(x = unit, y = scouting))+ geom_boxplot(aes(fill=unit))
